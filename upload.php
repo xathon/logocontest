@@ -1,12 +1,6 @@
 <?php
 
 
-// Legen Sie die Datei in xampp/htdocs/ ab und öffnen Sie mit dem Browser localhost:8080/Uploader.php
-// Ändern Sie die Zeile 12 auf Ihre Zugangsdaten und Datenbank ab.
-
-// wenn es Sie interessiert, wie das $_FILES Array aussieht, kommentieren Sie die folgende Zeile aus
-// echo "<pre>".print_r($_FILES,1)."</pre>";
-
 if (count($_FILES) > 0) {
     $f = array_pop($_FILES);
     $content = file_get_contents($f['tmp_name']); // bitte nicht ändern

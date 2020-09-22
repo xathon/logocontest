@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "helpers.php";
 
 require __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
@@ -16,6 +17,14 @@ if (mysqli_connect_errno()) {
 }
 
 if(isset($_POST['selected'])) {
+    //Store the Cantor number representing the IDs in the session.
+    //Since ⟨k1, k2⟩ != ⟨k2, k1⟩, we always use the smaller ID as k1. That way we avoid duplicates.
+    if($_POST['ID1'] < $_POST['ID2']) {
+        array_push($_SESSION['completed'],cantor($_POST['ID1'],$_POST['ID2']));
+    } else {
+        array_push($_SESSION['completed'],cantor($_POST['ID2'],$_POST['ID1']));
+    }
+
     $query = "UPDATE logos SET matchups = matchups + 1, won_matchups = won_matchups + 1 WHERE id = ";
     $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2'])."; ";
     $q = mysqli_query($remote,$query);
@@ -24,6 +33,44 @@ if(isset($_POST['selected'])) {
     $q = mysqli_query($remote,$query);
 
 }
+
+if(!isset($_SESSION['count'])){
+    $query = "select count(id) from logos; ";
+    $rCount = mysqli_query($remote,$query);
+    $_SESSION['count'] = mysqli_fetch_assoc($rCount)['count(id)'];
+    //echo "queried!";
+}
+
+if(!isset($_SESSION['completed'])){
+    $_SESSION['completed'] = [];
+}
+
+// To ensure that no logo pair is shown twice, we use a Cantor Pairing Function to store the information about the already shown pairs.
+$imageID1=0;
+$imageID2=0;
+$maxcount= ($_SESSION['count'] * ($_SESSION['count'] - 1) / 2); //maximum retries, redundant?
+
+
+for($i = 0; $i < $maxcount; $i++) {
+    //get two different, random numbers
+    do {
+        $imageID1 = rand(1,$_SESSION['count']);
+        $imageID2 = rand(1,$_SESSION['count']);
+
+    } while ($imageID1 == $imageID2);
+
+    // Check if Cantor value is in session variable
+    if($imageID1 > $imageID2) {
+        $tmp1 = $imageID2;
+        $tmp2 = $imageID1;
+    } else {
+        $tmp1 = $imageID1;
+        $tmp2 = $imageID2;
+    }
+    if(!in_array(cantor($tmp1,$tmp2),$_SESSION['completed'])) break;
+}
+
+
 echo '
 <html>
 <head>
@@ -49,18 +96,7 @@ echo '
     <div class="col-3" style="text-align: center">
 ';
 
-if(!isset($_SESSION['count'])){
-    $query = "select count(id) from logos; ";
-    $rCount = mysqli_query($remote,$query);
-    $_SESSION['count'] = mysqli_fetch_assoc($rCount)['count(id)'];
-    echo "queried!";
-}
-$imageID1=0;
-$imageID2=0;
-while ($imageID1 == $imageID2) {
-    $imageID1 = rand(1,$_SESSION['count']);
-    $imageID2 = rand(1,$_SESSION['count']);
-}
+
 
 //image 1
 
