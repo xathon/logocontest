@@ -32,12 +32,19 @@ if(isset($_POST['selected'])) {
     $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).";";
     $q = mysqli_query($remote,$query);
 
+
+    $query = "insert into matchups values ('" . $_POST['matchID'] . "', ";
+    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2']).", ";
+    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).",'";
+    $query .= session_id()."',default);";
+    $q = mysqli_query($remote,$query);
+
 }
 
-if(!isset($_SESSION['count'])){
+if(!isset($_SESSION['numberLogos'])){
     $query = "select count(id) from logos; ";
     $rCount = mysqli_query($remote,$query);
-    $_SESSION['count'] = mysqli_fetch_assoc($rCount)['count(id)'];
+    $_SESSION['numberLogos'] = mysqli_fetch_assoc($rCount)['count(id)'];
     //echo "queried!";
 }
 
@@ -45,17 +52,32 @@ if(!isset($_SESSION['completed'])){
     $_SESSION['completed'] = [];
 }
 
+
+if(sizeof($_SESSION['completed']) > 20) {
+
+    echo '<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Redirecting...</title>
+  <meta content="0; URL=thanks.php" http-equiv="refresh">
+</head>
+</html>';
+    exit();
+}
+
 // To ensure that no logo pair is shown twice, we use a Cantor Pairing Function to store the information about the already shown pairs.
 $imageID1=0;
 $imageID2=0;
-$maxcount= ($_SESSION['count'] * ($_SESSION['count'] - 1) / 2); //maximum retries, redundant?
+$maxcount= ($_SESSION['numberLogos'] * ($_SESSION['numberLogos'] - 1) / 2); //maximum retries, redundant?
 
 
 for($i = 0; $i < $maxcount; $i++) {
     //get two different, random numbers
     do {
-        $imageID1 = rand(1,$_SESSION['count']);
-        $imageID2 = rand(1,$_SESSION['count']);
+        $imageID1 = rand(1,$_SESSION['numberLogos']);
+        $imageID2 = rand(1,$_SESSION['numberLogos']);
 
     } while ($imageID1 == $imageID2);
 
@@ -83,6 +105,7 @@ echo '
     </div>
     <div class="col-6" style="text-align: center">
         <h1>Choose one!</h1>
+        <h3>'.sizeof($_SESSION['completed']).'/20</h3>
     </div>
 
 </div>
@@ -101,9 +124,16 @@ echo '
 //image 1
 
 $query = "select name,logo from logos where id = ".$imageID1." or id = ".$imageID2.";";
-$rImg1 = mysqli_query($remote,$query);
-$Img1 = mysqli_fetch_assoc($rImg1);
-$Img2 = mysqli_fetch_assoc($rImg1);
+$rImg = mysqli_query($remote,$query);
+if($imageID1 < $imageID2) {
+    $Img1 = mysqli_fetch_assoc($rImg);
+    $Img2 = mysqli_fetch_assoc($rImg);
+} else {
+    $Img2 = mysqli_fetch_assoc($rImg);
+    $Img1 = mysqli_fetch_assoc($rImg);
+}
+
+echo '<input type="hidden" name="matchID" value="'.bin2hex(random_bytes(10)).'">';
 echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
 echo '<input type="hidden" name="ID2" value="'.$imageID2.'">';
 

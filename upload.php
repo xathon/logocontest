@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 if (count($_FILES) > 0) {
     $f = array_pop($_FILES);
