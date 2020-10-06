@@ -16,3 +16,4 @@ There, the logos are ranked by their percentage of won matchups.
 ## To-Do
 * Build a non-ugly frontend
 * Alter collected data as needed
+* Automatically resize logos
