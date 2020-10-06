@@ -9,7 +9,7 @@ CREATE TABLE `logos` (
                          `division` varchar(15) NOT NULL DEFAULT 'Unlimited',
                          PRIMARY KEY (`id`),
                          UNIQUE KEY `logos_name_uindex` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `matchups`;
 CREATE TABLE `matchups` (
