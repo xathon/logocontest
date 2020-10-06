@@ -1,4 +1,4 @@
-#Logo Contest WIP
+# Logo Contest WIP
 If you host this yourself, make sure to create a .env file with the following contents:
 ```
 DB_HOST="YOUR_HOST"
@@ -9,10 +9,10 @@ DB_PORT="YOUR_PORT"
 ```
 Also install the dependencies via `composer install`.
 
-##Usage
+## Usage
 Staff can upload logos via the upload.php site. On the main page, there's a link to the voting page and to the dynamic results page.
 There, the logos are ranked by their percentage of won matchups.
 
-##To-Do
+## To-Do
 * Build a non-ugly frontend
 * Alter collected data as needed
