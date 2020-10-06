@@ -19,13 +19,14 @@ if (count($_FILES) > 0) {
     }
     $maxDimW = 500;
     $maxDimH = 500;
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     list($width, $height, $type, $attr) = getimagesize( $f['tmp_name'] );
     if ( $width > $maxDimW || $height > $maxDimH ) {
         $message = "Image too big! Max size 500*500";
     } else {
         $query =
             "INSERT INTO logocontest.logos (`name`, `logo`,`region`,`division`) " .
-            "VALUES ('" . $_POST['name'] . "','" . base64_encode($content) . "','".$_POST['region'] . "','".$_POST['division'] . "');";
+            "VALUES ('" . $name . "','" . base64_encode($content) . "','".$_POST['region'] . "','".$_POST['division'] . "');";
 
 
         // (Debug):
