@@ -24,8 +24,8 @@ if (count($_FILES) > 0) {
         $message = "Image too big! Max size 500*500";
     } else {
         $query =
-            "INSERT INTO logocontest.logos (`name`, `logo`) " .
-            "VALUES ('" . $_POST['name'] . "','" . base64_encode($content) . "');";
+            "INSERT INTO logocontest.logos (`name`, `logo`,`region`,`division`) " .
+            "VALUES ('" . $_POST['name'] . "','" . base64_encode($content) . "','".$_POST['region'] . "','".$_POST['division'] . "');";
 
 
         // (Debug):
@@ -60,8 +60,29 @@ mysqli_close($remote);
             <div>
                 <label for="bild">Choose an image</label>
                 <input type="file" accept="image/*" required name="image" id="image">
+                <br>
                 <label for="titel">Name</label>
                 <input type="text" name="name" id="name">
+
+                <br>Region:
+                <label for="NA">NA</label>
+                <input type="radio" id="NA" name="region" value="NA">
+                <label for="EU">EU</label>
+                <input type="radio" id="EU" name="region" value="EU">
+
+                <br>Division:
+                <label for="beg">Beginner</label>
+                <input type="radio" id="beg" name="division" value="Beginner">
+                <label for="roo">Rookie</label>
+                <input type="radio" id="roo" name="division" value="Rookie">
+                <label for="int">Intermediate</label>
+                <input type="radio" id="int" name="division" value="Intermediate">
+                <label for="adv">Advanced</label>
+                <input type="radio" id="adv" name="division" value="Advanced">
+                <label for="exp">Expert</label>
+                <input type="radio" id="exp" name="division" value="Expert">
+                <label for="unl">Unlimited</label>
+                <input type="radio" id="unl" name="division" value="Unlimited">
 
             </div>
             <div>

@@ -52,6 +52,12 @@ if(!isset($_SESSION['completed'])){
     $_SESSION['completed'] = [];
 }
 
+if(!isset($_SESSION['highestID'])) {
+    $query = "select id from logos order by id desc limit 1";
+    $result = mysqli_query($remote,$query);
+    $_SESSION['highestID'] = mysqli_fetch_assoc($result)['id'];
+}
+
 
 if(sizeof($_SESSION['completed']) > 20) {
 
@@ -76,8 +82,8 @@ $maxcount= ($_SESSION['numberLogos'] * ($_SESSION['numberLogos'] - 1) / 2); //ma
 for($i = 0; $i < $maxcount; $i++) {
     //get two different, random numbers
     do {
-        $imageID1 = rand(1,$_SESSION['numberLogos']);
-        $imageID2 = rand(1,$_SESSION['numberLogos']);
+        $imageID1 = rand(1,$_SESSION['highestID']);
+        $imageID2 = rand(1,$_SESSION['highestID']);
 
     } while ($imageID1 == $imageID2);
 
@@ -90,6 +96,29 @@ for($i = 0; $i < $maxcount; $i++) {
         $tmp2 = $imageID2;
     }
     if(!in_array(cantor($tmp1,$tmp2),$_SESSION['completed'])) break;
+}
+
+$query = "select name,logo from logos where id = ".$imageID1." or id = ".$imageID2.";";
+$rImg = mysqli_query($remote,$query);
+if($imageID1 < $imageID2) {
+    $Img1 = mysqli_fetch_assoc($rImg);
+    $Img2 = mysqli_fetch_assoc($rImg);
+} else {
+    $Img2 = mysqli_fetch_assoc($rImg);
+    $Img1 = mysqli_fetch_assoc($rImg);
+}
+
+if($Img1 == NULL || $Img2 == NULL) { //Workaround if a number has no associated ID in the database (e.g. a logo has been deleted)
+    echo '<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Redirecting...</title>
+  <meta content="0; URL=vote.php" http-equiv="refresh">
+</head>
+</html>';
+    exit();
 }
 
 
@@ -122,16 +151,6 @@ echo '
 
 
 //image 1
-
-$query = "select name,logo from logos where id = ".$imageID1." or id = ".$imageID2.";";
-$rImg = mysqli_query($remote,$query);
-if($imageID1 < $imageID2) {
-    $Img1 = mysqli_fetch_assoc($rImg);
-    $Img2 = mysqli_fetch_assoc($rImg);
-} else {
-    $Img2 = mysqli_fetch_assoc($rImg);
-    $Img1 = mysqli_fetch_assoc($rImg);
-}
 
 echo '<input type="hidden" name="matchID" value="'.bin2hex(random_bytes(10)).'">';
 echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
