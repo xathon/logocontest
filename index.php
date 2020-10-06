@@ -10,7 +10,7 @@ unset($_SESSION)
         <link href="css/bootstrap.css" rel="stylesheet">
     </head>
     <body>
-    <div class="row" style="height: 20em"></div>
+        <div class="row" style="height: 20em"></div>
         <div class="row">
             <div class="col-3">
 
@@ -26,6 +26,7 @@ unset($_SESSION)
             </div>
             <div class="col-6" style="text-align: center">
                 <a class="btn btn-primary" role="button" href="vote.php">Start</a>
+                <a class="btn btn-primary" role="button" href="output.php">Results</a>
             </div>
         </div>
     </body>
