@@ -28,4 +28,4 @@ CREATE TABLE `matchups` (
 DROP TABLE IF EXISTS `output`;
 DROP VIEW IF EXISTS `output`;
 create view output as
-select *, (won_matchups/matchups) as won_ratio from logos order by won_ratio DESC;
+select *,(won_matchups/matchups) as won_ratio from logos order by won_ratio DESC,matchups DESC;
