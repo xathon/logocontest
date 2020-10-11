@@ -1,0 +1,127 @@
+$elohell-grey: #2E2E2E;
+$elohell-black: #212121;
+$elohell-pink: #E53E62;
+$elohell-lightgrey: #707070;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+
+h1, h2, h3, h4, .vs {
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 3.125rem;
+}
+
+body {
+    background-color: $elohell-grey;
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.container, form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 99%;
+    overflow: hidden;
+
+    .text {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    .vs {
+        position: absolute;
+        font-size: 3.75rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align: center;
+        width: 150px;
+        height: 150px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        vertical-align: middle;
+        color: $elohell-lightgrey;
+
+        &::before {
+            position: absolute;
+            content: " ";
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 9.375rem;
+            height: 9.375rem;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: rotate(45deg);
+            background-color: $elohell-black;
+            z-index: -1;
+        }
+    }
+}
+
+.logo__wrapper {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: " ";
+        height: 1000px;
+        width: 1000px;
+        background-color: $elohell-black;
+        z-index: -1;
+    }
+
+
+    .img-fluid {
+        width: 20vw;
+        // opacity: 2;
+        position: relative;
+        margin-left: 25%;
+    }
+}
+
+.logo1::before {
+    transform-origin: center center;
+    transform: translate(-50%, 0) rotate(45deg) ;
+}
+
+.logo2::before {
+    transform-origin: center center;
+    transform: translate(50%, 0) rotate(45deg) ;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 1%;
+    background-color: $elohell-pink;
+}

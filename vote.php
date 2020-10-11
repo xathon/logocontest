@@ -110,6 +110,7 @@ if($imageID1 < $imageID2) {
 
 if($Img1 == NULL || $Img2 == NULL) { //Workaround if a number has no associated ID in the database (e.g. a logo has been deleted)
     echo '<html>
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -125,27 +126,23 @@ if($Img1 == NULL || $Img2 == NULL) { //Workaround if a number has no associated 
 echo '
 <html>
 <head>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/vote.style.css" rel="stylesheet">
 </head>
-<body>
-<div class="row">
-    <div class="col-3">
 
-    </div>
-    <div class="col-6" style="text-align: center">
+<body>
+<div class="container">
+
+    
+    <div class="text" style="text-align: center">
         <h1>Choose one!</h1>
         <h3>'.sizeof($_SESSION['completed']).'/20</h3>
     </div>
+    
 
-</div>
-<div class="row">
+    <div class="vs"><span>VS</span></div>
 
     <form style="width: 100%" method="post">
-    <div class="form-row">
-        <div class="col-3">
-
-    </div>
-    <div class="col-3" style="text-align: center">
+    <div class="logo__wrapper logo1">
 ';
 
 
@@ -157,15 +154,13 @@ echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
 echo '<input type="hidden" name="ID2" value="'.$imageID2.'">';
 
 
-echo '<div style="width: 100%"><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img1['logo'].'" width="50%" alt="'.$Img1['name'].'"></div>';
-echo '<button class="btn btn-primary" type="submit" value="'.$imageID1.'" name="selected">'.$Img1['name'].'</button>';
+echo '<div class="team__wrapper"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img1['logo'].'" width="50%" alt="'.$Img1['name'].'"></div>';
 
 echo '</div>
-<div class="col-3" style="text-align: center;align-items: center">';
+<div class="logo__wrapper logo2">';
 //image 2
 
-echo '<div style="width: 100%"><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img2['logo'].'" width="50%" alt="'.$Img2['name'].'"></div>';
-echo '<button class="btn btn-primary" type="submit" value="'.$imageID2.'" name="selected">'.$Img2['name'].'</button>';
+echo '<div class="team__wrapper"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img2['logo'].'" width="50%" alt="'.$Img2['name'].'"></div>';
 
 
 
@@ -174,7 +169,9 @@ echo '<button class="btn btn-primary" type="submit" value="'.$imageID2.'" name="
 echo '    </div>
     </div>
     </form>
+    <div id="progress-bar"></div>
 </div>
+
 </body>
 </html>';
 ?>
