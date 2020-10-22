@@ -126,7 +126,10 @@ if($Img1 == NULL || $Img2 == NULL) { //Workaround if a number has no associated 
 echo '
 <html>
 <head>
+<link href="css/style.css" rel="stylesheet">
     <link href="css/vote.style.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -154,13 +157,13 @@ echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
 echo '<input type="hidden" name="ID2" value="'.$imageID2.'">';
 
 
-echo '<div class="team__wrapper"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img1['logo'].'" width="50%" alt="'.$Img1['name'].'"></div>';
+echo '<div class="team__wrapper"><button class="btn" type="submit" value="'.$imageID1.'" name="selected"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img1['logo'].'" width="50%" alt="'.$Img1['name'].'"></button></div>';
 
 echo '</div>
 <div class="logo__wrapper logo2">';
 //image 2
 
-echo '<div class="team__wrapper"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img2['logo'].'" width="50%" alt="'.$Img2['name'].'"></div>';
+echo '<div class="team__wrapper"><button class="btn"  type="submit" value="'.$imageID2.'" name="selected"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img2['logo'].'" width="50%" alt="'.$Img2['name'].'"></button></div>';
 
 
 

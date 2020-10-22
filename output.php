@@ -23,6 +23,10 @@ $result = mysqli_query($remote, $query);
 echo '<html>
 <head>
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/output.style.css" rel="stylesheet">
+
+
 </head>
 <body>
 <div class="row">

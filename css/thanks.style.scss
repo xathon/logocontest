@@ -1,0 +1,13 @@
+$elohell-grey: #2E2E2E;
+$elohell-black: #212121;
+$elohell-pink: #E53E62;
+$elohell-lightgrey: #707070;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
