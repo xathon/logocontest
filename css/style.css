@@ -35,6 +35,10 @@ p {
   color: lightgray;
 }
 
+a {
+  color: #55acee;
+}
+
 .twitter {
   text-decoration: inherit;
   font-family: inherit;

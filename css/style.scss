@@ -39,6 +39,9 @@ p {
     margin-block-end: 0;
     color: lightgray;
 }
+a {
+    color: #55acee;
+}
 .twitter {
     text-decoration: inherit;
     font-family: inherit;
@@ -46,6 +49,7 @@ p {
     font-size: inherit;
     transition: background-color 0.5s ease;
     background-color: #00000000;
+    
 }
 .twitter:hover{
     background-color: $elohell-black;
