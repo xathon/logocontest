@@ -98,7 +98,7 @@ for($i = 0; $i < $maxcount; $i++) {
     if(!in_array(cantor($tmp1,$tmp2),$_SESSION['completed'])) break;
 }
 
-$query = "select name,logo from logos where id = ".$imageID1." or id = ".$imageID2.";";
+$query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";
 $rImg = mysqli_query($remote,$query);
 if($imageID1 < $imageID2) {
     $Img1 = mysqli_fetch_assoc($rImg);
@@ -108,7 +108,8 @@ if($imageID1 < $imageID2) {
     $Img1 = mysqli_fetch_assoc($rImg);
 }
 
-if($Img1 == NULL || $Img2 == NULL) { //Workaround if a number has no associated ID in the database (e.g. a logo has been deleted)
+
+if($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 0) { //Refresh if a number has no associated ID in the database (e.g. a logo has been deleted) or if the logo has been disabled
     echo '<html>
 
 <head>
@@ -151,28 +152,28 @@ echo '
 
 
 //image 1
-
+echo '<input type="hidden" name="userIP" value="'.sha1($_SERVER['REMOTE_ADDR']).'">';
 echo '<input type="hidden" name="matchID" value="'.bin2hex(random_bytes(10)).'">';
 echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
 echo '<input type="hidden" name="ID2" value="'.$imageID2.'">';
 
 
-echo '<div class="team__wrapper"><button class="btn" type="submit" value="'.$imageID1.'" name="selected"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img1['logo'].'" width="50%" alt="'.$Img1['name'].'"></button></div>';
+echo '<div class="team__wrapper"><button class="btn" type="submit" value="'.$imageID1.'" name="selected"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://overlay.elohell.gg/images/teams/'.normalize_text($Img1['name']).'.png" width="50%" alt="'.$Img1['name'].'"></button></div>';
 
 echo '</div>
 <div class="logo__wrapper logo2">';
 //image 2
 
-echo '<div class="team__wrapper"><button class="btn"  type="submit" value="'.$imageID2.'" name="selected"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$Img2['logo'].'" width="50%" alt="'.$Img2['name'].'"></button></div>';
+echo '<div class="team__wrapper"><button class="btn"  type="submit" value="'.$imageID2.'" name="selected"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://overlay.elohell.gg/images/teams/'.normalize_text($Img2['name']).'.png" width="50%" alt="'.$Img2['name'].'"></button></div>';
 
 
 
-
+$progress = sizeof($_SESSION['completed']) * 5;
 
 echo '    </div>
     </div>
     </form>
-    <div id="progress-bar"></div>
+    <div id="progress-bar" style="width: '.$progress.'%"></div>
 </div>
 
 </body>

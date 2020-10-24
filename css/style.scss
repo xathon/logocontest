@@ -1,6 +1,6 @@
 $elohell-grey: #2E2E2E;
 $elohell-black: #212121;
-$elohell-pink: #E53E62;
+$elohell-orange: #FF882C;
 $elohell-lightgrey: #707070;
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
@@ -25,11 +25,28 @@ body {
 }
 
 .btn {
-    background-color: $elohell-pink;
+    background-color: $elohell-orange;
     font-family: 'Barlow Condensed', sans-serif;
     color: white;
     padding: 8px 20px;
     border-radius: 5%;
     text-decoration: none;
     font-size: 24;
+}
+p {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1rem;
+    margin-block-end: 0;
+    color: lightgray;
+}
+.twitter {
+    text-decoration: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    transition: background-color 0.5s ease;
+    background-color: #00000000;
+}
+.twitter:hover{
+    background-color: $elohell-black;
 }

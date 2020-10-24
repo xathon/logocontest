@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'helpers.php';
 
 //TODO seperate this into a snippet
 require __DIR__ . '/vendor/autoload.php';
@@ -34,7 +35,7 @@ echo '<html>
 
     </div>
     <div class="col-8" style="text-align: center">
-        <h1>Current ranking</h1>
+        <h1>Current ranking (staff only!)</h1>
     </div>
 
 </div>
@@ -60,7 +61,7 @@ while ( $row!= NULL) {
     echo '
             <tr>
                 <th scope="row">'.++$count.'</th>
-                <td><img style="margin:20px" class="img-fluid" src="data:image/jpeg;base64,'.$row['logo'].'" width="50px" alt="'.$row['name'].'"></td>
+                <td><img style="margin:20px" class="img-fluid" src="images/teams/'.normalize_text($row['name']).'.png" width="50px" alt="'.$row['name'].'"></td>
                 <td>'.$row['name'].'</td>
                 <td>'.$row['region'].' '.$row['division'].'</td>
                 <td>'.$row['won_matchups'].'/'.$row['matchups'].'</td>
