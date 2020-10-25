@@ -14,7 +14,7 @@ CREATE TABLE `logos` (
 
 
 -- Replace with local file
-LOAD DATA INFILE 'c:\Production\GG S6 Teams.csv'
+LOAD DATA INFILE '/home/xathon/websites/xathon.de/public/logocontest/GGS6 Teams.csv'
     into table logos
     fields terminated by ';'
     enclosed by '"'

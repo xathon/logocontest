@@ -61,7 +61,7 @@ while ( $row!= NULL) {
     echo '
             <tr>
                 <th scope="row">'.++$count.'</th>
-                <td><img style="margin:20px" class="img-fluid" src="images/teams/'.normalize_text($row['name']).'.png" width="50px" alt="'.$row['name'].'"></td>
+                <td><img style="margin:20px" class="img-fluid" src="https://overlay.elohell.gg/images/teams/'.normalize_text($row['name']).'.png" width="50px" alt="'.$row['name'].'"></td>
                 <td>'.$row['name'].'</td>
                 <td>'.$row['region'].' '.$row['division'].'</td>
                 <td>'.$row['won_matchups'].'/'.$row['matchups'].'</td>
