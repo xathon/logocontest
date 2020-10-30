@@ -1,3 +1,6 @@
+use logocontest;
+DROP TABLE IF EXISTS `matchups`;
+DROP VIEW IF EXISTS `output`;
 DROP TABLE IF EXISTS `logos`;
 CREATE TABLE `logos` (
                          `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'EHE Unique ID',
@@ -14,11 +17,12 @@ CREATE TABLE `logos` (
 
 
 -- Replace with local file
-LOAD DATA INFILE '/home/xathon/websites/xathon.de/public/logocontest/GGS6 Teams.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/GGS6 Teams.csv'
     into table logos
     fields terminated by ';'
     enclosed by '"'
-    lines terminated by '\n';
+    lines terminated by '\n'
+    (name,region,division,active);
 
 
 
@@ -29,7 +33,7 @@ CREATE TABLE `matchups` (
                             `winner` int(11) NOT NULL,
                             `loser` int(11) NOT NULL,
                             `ip_hash` varchar(40) NOT NULL,
-                            `time` int(10) NOT NULL DEFAULT UNIX_TIMESTAMP(),
+                            `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             PRIMARY KEY (`id`),
                             KEY `matchups_logos_id_fk` (`winner`),
                             KEY `matchups___fk2` (`loser`),

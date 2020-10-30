@@ -3,3 +3,4 @@
 # .env needs to be manually supplied
 .env
 /images/
+.ht*
