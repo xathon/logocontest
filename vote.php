@@ -158,13 +158,13 @@ echo '<input type="hidden" name="ID1" value="'.$imageID1.'">';
 echo '<input type="hidden" name="ID2" value="'.$imageID2.'">';
 
 
-echo '<div class="team__wrapper"><button class="btn" type="submit" value="'.$imageID1.'" name="selected"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://overlay.elohell.gg/images/teams/'.normalize_text($Img1['name']).'.png" width="50%" alt="'.$Img1['name'].'"></button></div>';
+echo '<div class="team__wrapper"><button class="btn" type="submit" value="'.$imageID1.'" name="selected"><h4>'.$Img1['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($Img1['name']).'.png" width="50%" alt="'.$Img1['name'].'"></button></div>';
 
 echo '</div>
 <div class="logo__wrapper logo2">';
 //image 2
 
-echo '<div class="team__wrapper"><button class="btn"  type="submit" value="'.$imageID2.'" name="selected"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://overlay.elohell.gg/images/teams/'.normalize_text($Img2['name']).'.png" width="50%" alt="'.$Img2['name'].'"></button></div>';
+echo '<div class="team__wrapper"><button class="btn"  type="submit" value="'.$imageID2.'" name="selected"><h4>'.$Img2['name'].'</h4><img style="margin:20px" class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($Img2['name']).'.png" width="50%" alt="'.$Img2['name'].'"></button></div>';
 
 
 
