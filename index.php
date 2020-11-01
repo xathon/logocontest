@@ -8,6 +8,7 @@ session_unset();
     <head>
         <link href="css/style.css" rel="stylesheet">
         <link href="css/index.style.css" rel="stylesheet">
+	<title>GitGud Logocontest</title>
 
     </head>
     <body>

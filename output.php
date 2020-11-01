@@ -26,6 +26,7 @@ echo '<html>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/output.style.css" rel="stylesheet">
+	<title>GitGud Logocontest</title>
 
 
 </head>

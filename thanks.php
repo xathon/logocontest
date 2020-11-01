@@ -7,6 +7,7 @@ echo '<html>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/thanks.style.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
+	<title>GitGud Logocontest</title>
 
 </head>
 <body>
