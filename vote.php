@@ -59,7 +59,7 @@ if(!isset($_SESSION['highestID'])) {
 }
 
 
-if(sizeof($_SESSION['completed']) > 20) {
+if(sizeof($_SESSION['completed']) >= 20) {
 
     echo '<html lang="en">
 <head>
@@ -148,7 +148,7 @@ echo '
     
     <div class="text" style="text-align: center">
         <h1>Choose one!</h1>
-        <h3>'.sizeof($_SESSION['completed']).'/20</h3>
+        <h3>'.(sizeof($_SESSION['completed']) + 1).'/20</h3>
     </div>
     
 
