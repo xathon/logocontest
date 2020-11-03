@@ -72,6 +72,7 @@
   width: 20vw;
   position: relative;
   margin-left: 25%;
+  cursor: pointer;
 }
 
 .logo1::before {
@@ -110,7 +111,6 @@ form {
   border: 0;
   padding: 0;
   display: inline-block;
-  cursor: pointer;
 }
 .team__wrapper button:hover {
   background-color: transparent;

@@ -83,6 +83,7 @@ $elohell-lightgrey: #707070;
         // opacity: 2;
         position: relative;
         margin-left: 25%;
+        cursor: pointer;
     }
 }
 
@@ -122,7 +123,7 @@ form {
         border: 0;
         padding: 0;
         display: inline-block;
-        cursor:pointer;
+
 
         &:hover {
             background-color: transparent;
