@@ -80,49 +80,37 @@ $imageID2=0;
 $maxcount= ($_SESSION['numberLogos'] * ($_SESSION['numberLogos'] - 1) / 2); //maximum retries, redundant?
 
 
-for($i = 0; $i < $maxcount; $i++) {
-    //get two different, random numbers
-    do {
-        $imageID1 = rand(1,$_SESSION['highestID']);
-        $imageID2 = rand(1,$_SESSION['highestID']);
+do {
+    for($i = 0; $i < $maxcount; $i++) {
+        //get two different, random numbers
+        do {
+            $imageID1 = rand(1,$_SESSION['highestID']);
+            $imageID2 = rand(1,$_SESSION['highestID']);
 
-    } while ($imageID1 == $imageID2);
+        } while ($imageID1 == $imageID2);
 
-    // Check if Cantor value is in session variable
-    if($imageID1 > $imageID2) {
-        $tmp1 = $imageID2;
-        $tmp2 = $imageID1;
-    } else {
-        $tmp1 = $imageID1;
-        $tmp2 = $imageID2;
+        // Check if Cantor value is in session variable
+        if($imageID1 > $imageID2) {
+            $tmp1 = $imageID2;
+            $tmp2 = $imageID1;
+        } else {
+            $tmp1 = $imageID1;
+            $tmp2 = $imageID2;
+        }
+        if(!in_array(cantor($tmp1,$tmp2),$_SESSION['completed'])) break;
     }
-    if(!in_array(cantor($tmp1,$tmp2),$_SESSION['completed'])) break;
-}
 
-$query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";
-$rImg = mysqli_query($remote,$query);
-if($imageID1 < $imageID2) {
-    $Img1 = mysqli_fetch_assoc($rImg);
-    $Img2 = mysqli_fetch_assoc($rImg);
-} else {
-    $Img2 = mysqli_fetch_assoc($rImg);
-    $Img1 = mysqli_fetch_assoc($rImg);
-}
-
-
-if($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 0) { //Refresh if a number has no associated ID in the database (e.g. a logo has been deleted) or if the logo has been disabled
-    echo '<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <title>Redirecting...</title>
-  <meta content="0; URL=vote.php" http-equiv="refresh">
-</head>
-</html>';
-    exit();
-}
+    $query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";
+    $rImg = mysqli_query($remote,$query);
+    if($imageID1 < $imageID2) {
+        $Img1 = mysqli_fetch_assoc($rImg);
+        $Img2 = mysqli_fetch_assoc($rImg);
+    } else {
+        $Img2 = mysqli_fetch_assoc($rImg);
+        $Img1 = mysqli_fetch_assoc($rImg);
+    }
+    unset($query);
+} while ($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 0);
 
 
 echo '
