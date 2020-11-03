@@ -2,19 +2,27 @@
 session_start();
 if (isset($_SESSION['completed'])) $_SESSION['completed'] = [];
 
-echo '<html>
+echo '<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/thanks.style.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
 	<title>GitGud Logocontest</title>
+	
+	
+	<meta property="og:title" content="GitGud Logocontest" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://logos.elohell.gg/thanks.php" />
+	<meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png">
+	<meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
+	<meta name="theme-color" content="#FF882C">
 
 </head>
 <body>
     <div class="container">
         <div class="row align-content-center">
             <a target="_blank" rel="noopener noreferrer" href="https://events.elohell.gg/gitgud/info/">
-                <img src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" style="width: 10em">
+                <img src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" style="width: 10em" alt="GitGud logo">
             </a>
             
         </div>
@@ -34,7 +42,7 @@ echo '<html>
 
         <div class="fixed-bottom" style="position: absolute;bottom: 5px">
             <a href="https://elohell.gg">
-                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" style="height: 5em">
+                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" style="height: 5em" alt="Elo Hell Esports logo">
             </a>
         </div>
         <div class="fixed-bottom" style="position: absolute;bottom: 5px;right: 5px">

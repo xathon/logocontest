@@ -61,7 +61,7 @@ if(!isset($_SESSION['highestID'])) {
 
 if(sizeof($_SESSION['completed']) > 20) {
 
-    echo '<html>
+    echo '<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -110,7 +110,7 @@ if($imageID1 < $imageID2) {
 
 
 if($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 0) { //Refresh if a number has no associated ID in the database (e.g. a logo has been deleted) or if the logo has been disabled
-    echo '<html>
+    echo '<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -125,12 +125,21 @@ if($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 
 
 
 echo '
-<html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <link href="css/style.css" rel="stylesheet">
     <link href="css/vote.style.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
 	<title>GitGud Logocontest</title>
+	
+	<meta property="og:title" content="GitGud Logocontest" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="https://logos.elohell.gg/vote.php" />
+	<meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png">
+	<meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
+	<meta name="theme-color" content="#FF882C">
+	
+	
 </head>
 
 <body>
