@@ -16,6 +16,11 @@ if (mysqli_connect_errno()) {
     printf("Couldn't connect to database! %s\n", mysqli_connect_error());
     exit();
 }
+if(isset($_POST['selected'])) {
+    $query = "update logocontest.logos set active=0 where id = ".$_POST['selected'].";";
+    $result = mysqli_query($remote, $query);
+}
+
 
 $query = "select * from logocontest.output;";
 $result = mysqli_query($remote, $query);
@@ -52,6 +57,7 @@ echo '<html>
             <th scope="col">Name</th>
             <th scope="col">Division</th>
             <th scope="col">Won matchups</th>
+            <th scope="col">Delete</th>
         </thead>
         <tbody>
             
@@ -66,6 +72,7 @@ while ( $row!= NULL) {
                 <td>'.$row['name'].'</td>
                 <td>'.$row['region'].' '.$row['division'].'</td>
                 <td>'.$row['won_matchups'].'/'.$row['matchups'].'</td>
+                <td><form action="output.php" method="POST"> <button class="btn" type="submit" value="'.$row['id'].'" name="selected" >Remove</button></form></td>
             </tr>
     
     ';
