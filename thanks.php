@@ -4,6 +4,13 @@ if (isset($_SESSION['completed'])) $_SESSION['completed'] = [];
 
 echo '<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
+		<link rel="apple-touch-icon" sizes="180x180" href="https://elohell.gg/media/img/favicon/apple-touch-icon.png?v=1">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://elohell.gg/media/img/favicon/favicon-32x32.png?v=1">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://elohell.gg/media/img/favicon/favicon-16x16.png?v=1">
+		<link rel="manifest" href="https://elohell.gg/media/img/favicon/site.webmanifest?v=1">
+		<link rel="mask-icon" href="https://elohell.gg/media/img/favicon/safari-pinned-tab.svg?v=1" color="#e53e62">
+		<link rel="shortcut icon" href="https://elohell.gg/media/img/favicon/favicon.ico?v=1">
+
     <link href="css/style.css" rel="stylesheet">
     <link href="css/thanks.style.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
