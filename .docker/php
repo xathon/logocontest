@@ -1,0 +1,16 @@
+FROM php:7-fpm
+
+WORKDIR /code
+
+RUN apt update && \
+	apt install -y git libpng-dev zlib1g-dev && \
+	docker-php-ext-install mysqli && \
+	docker-php-ext-install gd
+COPY static/php/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY static/php/composer_install.php /code/composer_install.php
+RUN php composer_install.php && mv composer.phar /usr/local/bin/composer && rm composer_install.php
+COPY static/php/composer.auth.json /root/.composer/auth.json
+COPY static/php/composer.json /code/composer.json
+RUN composer install
+COPY . /code
+RUN composer update && composer install

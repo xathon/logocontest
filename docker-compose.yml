@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+    logos:
+        image: elohell:logos
+        build:
+            context: .
+            dockerfile: .docker/logos
+        ports:
+            - "4000:4000"
+        env_file:
+            - .env
+        links:
+            - php
+
+    php:
+        build:
+            context: .
+            dockerfile: .docker/php
+        env_file:
+          - .env

@@ -1,0 +1,36 @@
+server {
+    server_name logos.elohell.gg;
+    root /var/www/html;
+    index index.php index.html;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/logos.elohell.gg/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/logos.elohell.gg/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = logos.elohell.gg) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen logos.elohell.gg:80;
+    server_name logos.elohell.gg;
+    return 404; # managed by Certbot
+
+
+}
