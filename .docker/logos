@@ -4,7 +4,6 @@ VOLUME /code
 WORKDIR /code
 
 COPY static/nginx/logos.conf /etc/nginx/conf.d/
-COPY static/nginx/certs/logos.elohell.gg /etc/ssl/certs/
 COPY . /code
 
 RUN rm /etc/nginx/conf.d/default.conf && rm /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
