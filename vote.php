@@ -20,25 +20,38 @@ if (mysqli_connect_errno()) {
 if(isset($_POST['selected'])) {
     //Store the Cantor number representing the IDs in the session.
     //Since ⟨k1, k2⟩ != ⟨k2, k1⟩, we always use the smaller ID as k1. That way we avoid duplicates.
+    $alreadyInSession = false;
     if($_POST['ID1'] < $_POST['ID2']) {
-        array_push($_SESSION['completed'],cantor($_POST['ID1'],$_POST['ID2']));
+         if(!in_array(cantor($_POST['ID1'],$_POST['ID2']),$_SESSION['completed'])) {
+             array_push($_SESSION['completed'],cantor($_POST['ID1'],$_POST['ID2']));
+         } else {
+             $alreadyInSession = true;
+         }
+
     } else {
-        array_push($_SESSION['completed'],cantor($_POST['ID2'],$_POST['ID1']));
+        if(!in_array(cantor($_POST['ID2'],$_POST['ID1']),$_SESSION['completed'])) {
+            array_push($_SESSION['completed'], cantor($_POST['ID2'], $_POST['ID1']));
+        } else {
+            $alreadyInSession = true;
+        }
+    }
+    if(!$alreadyInSession) {
+        $query = "UPDATE logos SET matchups = matchups + 1, won_matchups = won_matchups + 1 WHERE id = ";
+        $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2'])."; ";
+        $q = mysqli_query($remote,$query);
+        $query = "update logos set matchups = matchups + 1 where id = ";
+        $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).";";
+        $q = mysqli_query($remote,$query);
+
+
+        $query = "insert into matchups values ('" . $_POST['matchID'] . "', ";
+        $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2']).", ";
+        $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).",'";
+        $query .= session_id()."',default);";
+        $q = mysqli_query($remote,$query);
     }
 
-    $query = "UPDATE logos SET matchups = matchups + 1, won_matchups = won_matchups + 1 WHERE id = ";
-    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2'])."; ";
-    $q = mysqli_query($remote,$query);
-    $query = "update logos set matchups = matchups + 1 where id = ";
-    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).";";
-    $q = mysqli_query($remote,$query);
-
-
-    $query = "insert into matchups values ('" . $_POST['matchID'] . "', ";
-    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID1'] : $_POST['ID2']).", ";
-    $query .= ($_POST['selected'] == $_POST['ID1'] ? $_POST['ID2'] : $_POST['ID1']).",'";
-    $query .= session_id()."',default);";
-    $q = mysqli_query($remote,$query);
+    unset($_POST);
 
 }
 
