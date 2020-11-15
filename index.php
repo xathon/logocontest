@@ -38,14 +38,14 @@ if(time()>1605459600) {
                 <div class="row align-self-center w-100" >
                     <div class="col-10 col-6-lg d-none d-lg-block" style="text-align: center;margin: auto">
                         <h1 style="font-size: 3em;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud logocontest!</h1>
-                        <h2>The first round of voting has ended!<br>
-                            The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter to stay in touch! </h2>
-
+                        <h2 style="font-size: 1.25em;font-weight: normal">The first round of voting has ended!<br>
+                            The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter, where the final votes will happen daily! </h2>
+                        <a class="twitter-timeline" data-border-color="#FF882C" data-chrome="noheader,nofooter,transparent" data-dnt="true" data-theme="dark" data-height="300" href="https://twitter.com/EloHellEsports?ref_src=twsrc%5Etfw" >Tweets by EloHellEsports</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                     <div class="col-10 col-6-lg d-lg-none" style="text-align: center;margin: auto">
                         <h1 style="font-size: 6em;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud logocontest!</h1>
                         <p style="font-size: 3em;margin-top: 0.2em;margin-bottom: 0.2em;">The first round of voting has ended!<br>
-                            The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter to stay in touch! </p>
+                            The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter, where the final votes will happen daily! </p>
 
                     </div>
                 </div>
