@@ -23,7 +23,7 @@ if(isset($_POST['selected'])) {
 }
 
 
-$query = "select * from logocontest.output;";
+$query = "select * from logocontest.output order by name ASC;";
 $result = mysqli_query($remote, $query);
 
 
@@ -49,7 +49,8 @@ echo '<html>
 
     </div>
     <div class="col-8" style="text-align: center">
-        <h1>Current ranking (staff only!)</h1>
+        <h1>All the logos to choose from!</h1>
+        <h1>Hint: click on a logo to see it in full size!</h1>
     </div>
 
 </div>
@@ -60,12 +61,9 @@ echo '<html>
     <div class="col-8" style="text-align: center">
     <table class="table">
         <thead>
-            <th scope="col">Position</th>
             <th scope="col">Logo</th>
             <th scope="col">Name</th>
-            <th scope="col">Division</th>
             <th scope="col">Won matchups</th>
-            <th scope="col">Delete</th>
         </thead>
         <tbody>
             
@@ -75,12 +73,9 @@ $row = mysqli_fetch_assoc($result);
 while ( $row!= NULL) {
     echo '
             <tr>
-                <th scope="row">'.++$count.'</th>
-                <td><a href="https://img.elohell.gg/overlay/teams/'.normalize_text($row['name']).'.png" target="_logo"><img style="margin:20px" class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($row['name']).'.png" width="50px" alt="'.$row['name'].'"></a></td>
+                <td><a href="https://img.elohell.gg/overlay/teams/'.normalize_text($row['name']).'.png" target="_logo"><img style="margin:20px" class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($row['name']).'.png" width="100px" alt="'.$row['name'].'"></a></td>
                 <td>'.$row['name'].'</td>
-                <td>'.$row['region'].' '.$row['division'].'</td>
                 <td>'.$row['won_matchups'].'/'.$row['matchups'].'</td>
-                <td><form action="output.php" method="POST"> <button class="btn" type="submit" value="'.$row['id'].'" name="selected" >Remove</button></form></td>
             </tr>
     
     ';
