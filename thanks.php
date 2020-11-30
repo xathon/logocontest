@@ -1,6 +1,62 @@
 <?php
 session_start();
-if (isset($_SESSION['completed'])) $_SESSION['completed'] = [];
+include_once "helpers.php";
+
+require __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
+$dotenv->load();
+$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+
+$remote = mysqli_connect(getenv('DB_HOST'),
+    getenv('DB_USER'),
+    getenv('DB_PASS'),
+    getenv('DB_NAME'),
+    getenv('DB_PORT'));
+if (mysqli_connect_errno()) {
+    printf("Couldn't connect to database! %s\n", mysqli_connect_error());
+    exit();
+}
+
+if($_POST == []) {
+    header("Location: staffvote.php");
+}
+$query = "select * from ivoted where sessionid = '".session_id()."'";
+$q = mysqli_query($remote,$query);
+
+if($q->num_rows > 0) {
+    echo "You tried to vote more than once, even though we told you not to. Ollie is very disappointed in you.";
+    die();
+}
+$query = "insert into ivoted values('".session_id()."',".time().")";
+$q = mysqli_query($remote,$query);
+
+
+$query = "";
+if(isset($_POST['ollieburn'])) {
+    $query = "update logos set `ollieburn` = `ollieburn` + 1 where `id` = ".$_POST['ollieburn']."; ";
+}
+$query.= "update logos set `paint` = `paint` + 1 where `id` = ".$_POST['paint']."; ";
+$query.= "update logos set `animal` = `animal` + 1 where `id` = ".$_POST['animal']."; ";
+$query.= "update logos set `staff` = `staff` + 1 where `id` = ".$_POST['staff'];
+
+$q = mysqli_query($remote,$query);
+
+if(isset($_POST['ollieburn'])) {
+    $query = "select * from logos where id = ".$_POST['ollieburn'];
+    $q = mysqli_query($remote,$query);
+    $ollie = mysqli_fetch_assoc($q);
+}
+$query = "select * from logos where id = ".$_POST['paint'];
+$q = mysqli_query($remote,$query);
+$paint = mysqli_fetch_assoc($q);
+$query = "select * from logos where id = ".$_POST['animal'];
+$q = mysqli_query($remote,$query);
+$animal = mysqli_fetch_assoc($q);
+$query = "select * from logos where id = ".$_POST['staff'];
+$q = mysqli_query($remote,$query);
+$staff = mysqli_fetch_assoc($q);
+
+
 
 echo '<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
@@ -14,6 +70,7 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/thanks.style.css" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/bootstrap-grid.css" rel="stylesheet">
 	<title>GitGud Logocontest</title>
 	
 	
@@ -26,26 +83,68 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="max-width: 1500px">
         <div class="row align-content-center">
             <a target="_blank" rel="noopener noreferrer" href="https://events.elohell.gg/gitgud/info/">
                 <img src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" style="width: 10em" alt="GitGud logo">
             </a>
+            </div>
             
-        </div>
-        <div class="row align-self-center w-100">
-            <div class="col-6 align-content-center" style="text-align: center ">
-                <h1 style="font-size: 5em;margin-block-start: 0.33em;margin-block-end: 0.33em ">Thanks for voting!</h1>
-                <h2>The Top 16 logos will advance to a bracket to determine the winner! Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter to stay in touch! </h2>
-            </div>
-        </div>
-        <div class="row align-self-center w-100">
-            <div class="col-6">
-                <a class="btn btn-primary" role="button" href="vote.php">Go agane</a>
-            </div>
-        </div>
-
         
+        <div class="row align-self-center">
+            <div class="col align-content-center" style="text-align: center ">
+                <h1 style="font-size: 5em;margin-block-start: 0.33em;margin-block-end: 0.33em ">Thanks for voting!</h1>
+                </div></div>
+                <div class="row" style="min-width: 720px">
+                ';
+if(isset($ollie)) {
+    echo '<div class="col-3" >
+                <div class="mx-auto">
+                <h2>OllieBurn award:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($ollie['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($ollie['name']).'.png" width="100px" alt="'.$ollie['name'].'"></a>
+                </div>
+                </div>
+                <div class="col-3">
+                <div class="mx-auto">
+                <h2>MSPaint award:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($paint['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($paint['name']).'.png" width="100px" alt="'.$paint['name'].'"></a>
+                </div>
+                </div>
+                <div class="col-3">
+                <h2>Animal award:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($animal['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($animal['name']).'.png" width="100px" alt="'.$animal['name'].'"></a>
+                </div>
+                <div class="col-3">
+                <h2>Staff Choice:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" width="100px" alt="'.$staff['name'].'"></a>
+                </div>';
+} else {
+    echo '
+                <div class="col-4">
+                <div class="mx-auto">
+                <h2 class="text-center">MSPaint award:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($paint['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($paint['name']).'.png" width="100px" alt="'.$paint['name'].'"></a>
+                </div>
+                </div>
+                <div class="col-4">
+                <div class="mx-auto">
+                <h2 class="text-center">Animal award:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($animal['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($animal['name']).'.png" width="100px" alt="'.$animal['name'].'"></a>
+                </div>
+                </div>
+                <div class="col-4">
+                <div class="mx-auto">
+                <h2 class="text-center">Staff Choice:</h2>
+                <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" width="100px" alt="'.$staff['name'].'"></a>
+                </div>
+                </div>';
+}
+
+echo '
+
+            </div>
+        
+       
 
         <div class="fixed-bottom" style="position: absolute;bottom: 5px">
             <a href="https://elohell.gg">
