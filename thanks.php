@@ -33,14 +33,15 @@ $q = mysqli_query($remote,$query);
 
 $query = "";
 if(isset($_POST['ollieburn'])) {
-    $query = "update logos set `ollieburn` = `ollieburn` + 1 where `id` = ".$_POST['ollieburn']."; ";
+    $query = "update logocontest.logos set `ollieburn` = `ollieburn` + 1 where `id` = ".$_POST['ollieburn']."; ";
+    $q = mysqli_query($remote,$query);
 }
-$query.= "update logos set `paint` = `paint` + 1 where `id` = ".$_POST['paint']."; ";
-$query.= "update logos set `animal` = `animal` + 1 where `id` = ".$_POST['animal']."; ";
-$query.= "update logos set `staff` = `staff` + 1 where `id` = ".$_POST['staff'];
-
+$query = "update logocontest.logos set `paint` = `paint` + 1 where `id` = ".$_POST['paint']."; ";
 $q = mysqli_query($remote,$query);
-
+$query = "update logocontest.logos set `animal` = `animal` + 1 where `id` = ".$_POST['animal']."; ";
+$q = mysqli_query($remote,$query);
+$query = "update logocontest.logos set `staff` = `staff` + 1 where `id` = ".$_POST['staff'].";";
+$q = mysqli_query($remote,$query);
 if(isset($_POST['ollieburn'])) {
     $query = "select * from logos where id = ".$_POST['ollieburn'];
     $q = mysqli_query($remote,$query);
