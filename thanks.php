@@ -1,61 +1,50 @@
 <?php
 session_start();
 include_once "helpers.php";
-
-require __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
-$dotenv->load();
-$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
-
-$remote = mysqli_connect(getenv('DB_HOST'),
-    getenv('DB_USER'),
-    getenv('DB_PASS'),
-    getenv('DB_NAME'),
-    getenv('DB_PORT'));
-if (mysqli_connect_errno()) {
-    printf("Couldn't connect to database! %s\n", mysqli_connect_error());
-    exit();
-}
-
-if($_POST == []) {
-    header("Location: staffvote.php");
-}
-$query = "select * from ivoted where sessionid = '".session_id()."'";
-$q = mysqli_query($remote,$query);
-
-if($q->num_rows > 0) {
-    echo "You tried to vote more than once, even though we told you not to. Ollie is very disappointed in you.";
-    die();
-}
-$query = "insert into ivoted values('".session_id()."',".time().")";
-$q = mysqli_query($remote,$query);
+include_once "db_conn.php";
 
 
-$query = "";
-if(isset($_POST['ollieburn'])) {
-    $query = "update logocontest.logos set `ollieburn` = `ollieburn` + 1 where `id` = ".$_POST['ollieburn']."; ";
+if(time()>0 && false) {//TODO enter timestamp here
+    if($_POST == []) {
+        header("Location: staffvote.php");
+    }
+    // Single voting is only used for staff voting. During the regular voting time, you can vote as much as you want.
+    $query = "select * from ivoted where sessionid = '".session_id()."'";
     $q = mysqli_query($remote,$query);
-}
-$query = "update logocontest.logos set `paint` = `paint` + 1 where `id` = ".$_POST['paint']."; ";
-$q = mysqli_query($remote,$query);
-$query = "update logocontest.logos set `animal` = `animal` + 1 where `id` = ".$_POST['animal']."; ";
-$q = mysqli_query($remote,$query);
-$query = "update logocontest.logos set `staff` = `staff` + 1 where `id` = ".$_POST['staff'].";";
-$q = mysqli_query($remote,$query);
-if(isset($_POST['ollieburn'])) {
-    $query = "select * from logos where id = ".$_POST['ollieburn'];
+
+    if($q->num_rows > 0) {
+        echo "You tried to vote more than once, even though we told you not to. Ollie is very disappointed in you.";
+        die();
+    }
+    $query = "insert into ivoted values('".session_id()."',".time().")";
     $q = mysqli_query($remote,$query);
-    $ollie = mysqli_fetch_assoc($q);
+
+    $query = "";
+    if(isset($_POST['ollieburn'])) {
+        $query = "update logocontest.logos set `ollieburn` = `ollieburn` + 1 where `id` = ".$_POST['ollieburn']."; ";
+        $q = mysqli_query($remote,$query);
+    }
+    $query = "update logocontest.logos set `paint` = `paint` + 1 where `id` = ".$_POST['paint']."; ";
+    $q = mysqli_query($remote,$query);
+    $query = "update logocontest.logos set `animal` = `animal` + 1 where `id` = ".$_POST['animal']."; ";
+    $q = mysqli_query($remote,$query);
+    $query = "update logocontest.logos set `staff` = `staff` + 1 where `id` = ".$_POST['staff'].";";
+    $q = mysqli_query($remote,$query);
+    if(isset($_POST['ollieburn'])) {
+        $query = "select * from logos where id = ".$_POST['ollieburn'];
+        $q = mysqli_query($remote,$query);
+        $ollie = mysqli_fetch_assoc($q);
+    }
+    $query = "select * from logos where id = ".$_POST['paint'];
+    $q = mysqli_query($remote,$query);
+    $paint = mysqli_fetch_assoc($q);
+    $query = "select * from logos where id = ".$_POST['animal'];
+    $q = mysqli_query($remote,$query);
+    $animal = mysqli_fetch_assoc($q);
+    $query = "select * from logos where id = ".$_POST['staff'];
+    $q = mysqli_query($remote,$query);
+    $staff = mysqli_fetch_assoc($q);
 }
-$query = "select * from logos where id = ".$_POST['paint'];
-$q = mysqli_query($remote,$query);
-$paint = mysqli_fetch_assoc($q);
-$query = "select * from logos where id = ".$_POST['animal'];
-$q = mysqli_query($remote,$query);
-$animal = mysqli_fetch_assoc($q);
-$query = "select * from logos where id = ".$_POST['staff'];
-$q = mysqli_query($remote,$query);
-$staff = mysqli_fetch_assoc($q);
 
 
 
@@ -98,8 +87,10 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
                 </div></div>
                 <div class="row" style="min-width: 720px">
                 ';
-if(isset($ollie)) {
-    echo '<div class="col-3" >
+
+if(time()>0 && false) {//TODO enter timestamp here
+    if(isset($ollie)) {
+        echo '<div class="col-3" >
                 <div class="mx-auto">
                 <h2>OllieBurn award:</h2>
                 <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($ollie['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($ollie['name']).'.png" width="100px" alt="'.$ollie['name'].'"></a>
@@ -119,8 +110,8 @@ if(isset($ollie)) {
                 <h2>Staff Choice:</h2>
                 <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" width="100px" alt="'.$staff['name'].'"></a>
                 </div>';
-} else {
-    echo '
+    } else {
+        echo '
                 <div class="col-4">
                 <div class="mx-auto">
                 <h2 class="text-center">MSPaint award:</h2>
@@ -139,7 +130,10 @@ if(isset($ollie)) {
                 <a href="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" target="_logo"><img style="margin:20px" class="img" src="https://img.elohell.gg/overlay/teams/'.normalize_text($staff['name']).'.png" width="100px" alt="'.$staff['name'].'"></a>
                 </div>
                 </div>';
+    }
 }
+
+
 
 echo '
 

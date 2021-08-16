@@ -1,29 +1,15 @@
 <?php
 session_start();
 include_once 'helpers.php';
+include_once "db_conn.php";
 
-//TODO seperate this into a snippet
-require __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__, '.env');
-$dotenv->load();
-$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
-
-$remote = mysqli_connect(getenv('DB_HOST'),
-    getenv('DB_USER'),
-    getenv('DB_PASS'),
-    getenv('DB_NAME'),
-    getenv('DB_PORT'));
-if (mysqli_connect_errno()) {
-    printf("Couldn't connect to database! %s\n", mysqli_connect_error());
-    exit();
-}
 if(isset($_POST['selected'])) {
     $query = "update logocontest.logos set active=0 where id = ".$_POST['selected'].";";
     $result = mysqli_query($remote, $query);
 }
 
 
-$query = "select * from logocontest.output order by name ASC;";
+$query = "select * from logocontest.output order by won_matchups/output.matchups DESC,output.matchups DESC ;";
 $result = mysqli_query($remote, $query);
 
 
@@ -49,8 +35,7 @@ echo '<html>
 
     </div>
     <div class="col-8" style="text-align: center">
-        <h1>All the logos to choose from!</h1>
-        <h1>Hint: click on a logo to see it in full size!</h1>
+        <h1>Output of the current votings</h1>
     </div>
 
 </div>
