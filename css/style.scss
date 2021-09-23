@@ -1,7 +1,4 @@
-$elohell-grey: #2E2E2E;
-$elohell-black: #212121;
-$elohell-orange: #FF882C;
-$elohell-lightgrey: #707070;
+@use "vars";
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
 
@@ -9,6 +6,11 @@ h1, h2, h3, h4, .vs {
     color: white;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: bold;
+    user-select: none;
+}
+
+h1 {
+    font-size: 6vw;
 }
 
 h4 {
@@ -17,7 +19,7 @@ h4 {
 }
 
 body {
-    background-color: $elohell-grey;
+    background-color: vars.$elohell-grey;
     padding: 0;
     margin: 0;
     max-width: 100vw;
@@ -25,32 +27,79 @@ body {
 }
 
 .btn {
-    background-color: $elohell-orange;
+    user-select: none;
+    background-color: vars.$elohell-violet;
     font-family: 'Barlow Condensed', sans-serif;
     color: white;
     padding: 8px 20px;
     border-radius: 5%;
     text-decoration: none;
-    font-size: 24;
 }
 p {
     font-family: "Barlow Condensed", sans-serif;
     font-size: 1rem;
     margin-block-end: 0;
     color: lightgray;
+    user-select: none;
 }
 a {
-    color: #55acee;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1rem;
 }
-.twitter {
+.link {
     text-decoration: inherit;
     font-family: inherit;
     color: inherit;
     font-size: inherit;
     transition: background-color 0.5s ease;
     background-color: #00000000;
+    border-radius: 3px;
     
 }
-.twitter:hover{
-    background-color: $elohell-black;
+.link:hover{
+    background-color: vars.$elohell-violet;
+}
+img {
+    user-select: none;
+}
+.mobile {
+    display: none !important;
+}
+
+.nonmobile {
+    display: inherit;
+}
+
+.fixed-bottom {
+    position: absolute;
+    bottom: 3px
+}
+.fixed-bottom a img {
+    height: 7vh;
+    width: auto;
+}
+
+#gg-logo {
+    width: 10rem;
+}
+
+
+@media (max-width: 576px) {
+    .mobile {
+        display: inherit;
+    }
+
+    .nonmobile {
+        display: none !important;
+    }
+
+    .fixed-bottom {
+        right: 3px;
+    }
+
+    #gg-logo {
+        height: 20vh;
+
+        width: auto;
+    }
 }

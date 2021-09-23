@@ -24,6 +24,8 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
         <meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png"> 
         <meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
         <meta name="theme-color" content="#FF882C">
+        
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     </head>
     <body>
@@ -44,7 +46,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
                         <a class="twitter-timeline" data-border-color="#FF882C" data-chrome="noheader,nofooter,transparent" data-dnt="true" data-theme="dark" data-height="300" href="https://twitter.com/EloHellEsports?ref_src=twsrc%5Etfw" >Tweets by EloHellEsports</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                     <div class="col-10 col-6-lg d-lg-none" style="text-align: center;margin: auto">
-                        <h1 style="font-size: 6em;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud logocontest!</h1>
+                        <h1 style="font-size: 6vw;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud logocontest!</h1>
                         <p style="font-size: 3em;margin-top: 0.2em;margin-bottom: 0.2em;">The first round of voting has ended!<br>
                             The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a href="https://twitter.com/EloHellEsports">@elohellesports</a> on Twitter, where the final votes will happen daily! </p>
 
@@ -74,7 +76,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
     </body>
 </html>';
 } else {
-    //TODO implement rebranding
+    //TODO implement rebranding, make sure head is correct everywhere
     echo '
     <html lang="en">
     <head>
@@ -86,41 +88,72 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
 		<link rel="shortcut icon" href="https://elohell.gg/media/img/favicon/favicon.ico?v=1">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/index.style.css" rel="stylesheet">
+        <link href="css/bootstrap-grid.css" rel="stylesheet">
 	    <title>GitGud Logocontest</title>
 
         <meta property="og:title" content="GitGud Logocontest" />
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://logos.elohell.gg/" />
         <meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png">
-        <meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
-        <meta name="theme-color" content="#FF882C">
+        <meta property="og:description" content="Vote for your favorite team logos in the Elo Hell GitGud Tournament!">
+        <meta name="theme-color" content="#8633fc">
+
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     </head>
     <body>
 
-    <div class="container d-flex h-100" >
-        <div class="row align-content-center">
+    <div class="container-fluid d-flex h-100" >
+        <div class="row align-content-center" id="firstrow">
             <a target="_blank" rel="noopener noreferrer" href="https://events.elohell.gg/gitgud/info/">
-                <img src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" style="width: 10em" alt="GitGud logo">
+                <img id="gg-logo" src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" alt="GitGud logo">
             </a>
         </div>
         <div class="row align-self-center w-100">
-            <div class="col-10 col-6-lg" style="text-align: center">
-                <h1 style="font-size: 5em">Welcome to the GitGud logocontest!</h1>
+            <div class="col-12 col-6-lg" style="text-align: center">
+                <h1>Welcome to the GitGud logocontest!</h1>
             </div>
-            <div class="col-4"></div>
-            <div class="col-10 col-2-lg " style="text-align: center;width: 100%">
-                <a style="font-size: 3em" class="btn btn-lg btn-block" role="button" href="vote.php">Start</a>
-            </div>
-            <div class="col-4"></div>
         </div>
-        <div class="fixed-bottom" style="position: absolute;bottom: 3px">
+        <div class="row align-self-center w-100">
+            <div class="col-8 w-100">
+                <div class="tutorial-container collapsed" id="tutorial-container">
+                    <p class="header">How does it work?</p>
+                    <p id="tutorial" style="display: none">
+                        You will be shown two randomly picked logos. Just click on the one you like more!<br>
+                        Once the initial voting phase is over, the top 16 logos with the best "win/loss" ratio will face off in a bracket on Twitter!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-self-center w-100" style="margin-top: 2vh">
+            <div class="col-10 col-2-lg " style="text-align: center;width: 100%">
+                <a class="btn btn-lg" role="button" href="vote.php">Start</a>
+            </div>
+            
+        </div>
+        
+        <div class="fixed-bottom">
             <a href="https://elohell.gg">
-                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" style="height: 5em" alt="Elo Hell Esports logo">
+                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" alt="Elo Hell Esports logo">
             </a>
         </div>
     </div>
 
+<script lang="js">
+    let text = document.getElementById("tutorial");
+    let container = document.getElementById("tutorial-container");
+    
+    container.addEventListener("click",function () {
+        if(text.style.display === "none") {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+        container.classList.toggle("collapsed");
+    })
+    
+    
+</script>
               
 
     </body>

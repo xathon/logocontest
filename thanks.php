@@ -56,35 +56,44 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
 		<link rel="manifest" href="https://elohell.gg/media/img/favicon/site.webmanifest?v=1">
 		<link rel="mask-icon" href="https://elohell.gg/media/img/favicon/safari-pinned-tab.svg?v=1" color="#e53e62">
 		<link rel="shortcut icon" href="https://elohell.gg/media/img/favicon/favicon.ico?v=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/thanks.style.css" rel="stylesheet">
+        <link href="css/bootstrap-grid.css" rel="stylesheet">
+	    <title>GitGud Logocontest</title>
 
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/thanks.style.css" rel="stylesheet">
-    <link href="css/normalize.css" rel="stylesheet">
-    <link href="css/bootstrap-grid.css" rel="stylesheet">
-	<title>GitGud Logocontest</title>
-	
-	
-	<meta property="og:title" content="GitGud Logocontest" />
-	<meta property="og:type" content="website"/>
-	<meta property="og:url" content="https://logos.elohell.gg/thanks.php" />
-	<meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png">
-	<meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
-	<meta name="theme-color" content="#FF882C">
+        <meta property="og:title" content="GitGud Logocontest" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://logos.elohell.gg/" />
+        <meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png">
+        <meta property="og:description" content="Vote for your favorite team logos in the Elo Hell GitGud Tournament!">
+        <meta name="theme-color" content="#8633fc">
+
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
 </head>
 <body>
-    <div class="container" style="max-width: 1500px">
-        <div class="row align-content-center">
+    <div class="container-fluid">
+        <div class="row align-content-center" id="firstrow">
             <a target="_blank" rel="noopener noreferrer" href="https://events.elohell.gg/gitgud/info/">
-                <img src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" style="width: 10em" alt="GitGud logo">
+                <img id="gg-logo" src="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png" alt="GitGud logo">
             </a>
             </div>
             
         
         <div class="row align-self-center">
-            <div class="col align-content-center" style="text-align: center ">
-                <h1 style="font-size: 5em;margin-block-start: 0.33em;margin-block-end: 0.33em ">Thanks for voting!</h1>
-                </div></div>
+            <div class="col align-content-center" style="text-align: center">
+                <h1>Thanks for voting!</h1>
+            </div>
+        </div>
+        <div class="row align-content-center">
+            <div class="col" ">
+                <p>Make sure to follow <a class="link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/elohellesports">@elohellesports on Twitter</a> so you don\'t miss the Round of 16!</p>
+            </div>
+        </div>
+        <div class="row align-self-center w-100" style="margin-top: 2vh">
+                <a class="btn btn-lg" role="button" href="vote.php">Vote again!</a>
+            
+        </div>
                 <div class="row" style="min-width: 720px">
                 ';
 
@@ -141,13 +150,13 @@ echo '
         
        
 
-        <div class="fixed-bottom" style="position: absolute;bottom: 5px">
+        <div class="fixed-bottom">
             <a href="https://elohell.gg">
-                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" style="height: 5em" alt="Elo Hell Esports logo">
+                <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" alt="Elo Hell Esports logo">
             </a>
         </div>
-        <div class="fixed-bottom" style="position: absolute;bottom: 5px;right: 5px">
-        <p>Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Cinzzya" class="twitter">Cinzya</a> and <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/xathon_" class="twitter">Xathon</a></p>
+        <div class="fixed-bottom nonmobile" style="right: 5px">
+        <p>Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Cinzzya" class="link">Cinzya</a> and <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/xathon_" class="link">Xathon</a></p>
         </div>
     </div>
     

@@ -1,13 +1,66 @@
-$elohell-grey: #2E2E2E;
-$elohell-black: #212121;
-$elohell-pink: #E53E62;
-$elohell-lightgrey: #707070;
+@use "vars";
 
-.container {
+
+
+.container-fluid {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
     height: 100%;
+
+    background: url("../images/background/background_desktop.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+p:not(.fixed-bottom p) {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-top: 0;
+}
+a:not(.fixed-bottom a) {
+    color: #ffffff;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+@media (min-width: 576px) {
+    #firstrow {
+        margin-top: -15vh;
+    }
+}
+
+@media (max-width: 576px) {
+
+    h1 {
+        line-height: 1;
+        font-size: 3rem;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+
+    }
+    .container-fluid {
+        background: url("../images/background/background_mobile.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+    }
+    p {
+        color: #ffffff;
+        font-size: 1.25rem;
+        margin-top: 1vh;
+    }
+    a:not(.fixed-bottom a)  {
+        text-decoration: underline;
+    }
+    a.btn {
+        text-decoration: none !important;
+    }
+
 }

@@ -1,8 +1,108 @@
-.container {
+@use "vars";
+
+.container-fluid {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
     height: 100%;
+
+
+    background: url("../images/background/background_desktop.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.tutorial-container {
+    background-color: rgba(42, 42, 42, 0.32);
+    width: 40vw;
+    border-radius: 0.5vw;
+    text-align: center;
+    padding: 1vh 1vw;
+    transition: max-height 0.3s ease-out,display 0.3s ease-out,height 0.3s ease-out;
+    max-height: 17rem;
+}
+.tutorial-container .header {
+    color: #ffffff;
+    text-decoration: none;
+    font-style: italic;
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+.tutorial-container p {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+.tutorial-container.collapsed {
+    max-height: 5rem;
+}
+
+.btn {
+    font-size: 2vw;
+    padding: 1vh 3vw 1vh 3vw;
+}
+
+
+@media (max-width: 576px) {
+
+    #firstrow {
+        margin-top: -15vh;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+    .container-fluid {
+        background: url("../images/background/background_mobile.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .tutorial-container {
+        background-color: rgba(42, 42, 42, 0.32);
+        width: 80vw;
+        border-radius: 0.5vw;
+        text-align: center;
+        padding: 1vh 1vw;
+        transition: max-height 0.3s ease-out,display 0.3s ease-out,height 0.3s ease-out;
+        max-height: 17rem;
+    }
+    .tutorial-container .header {
+        color: #ffffff;
+        text-decoration: none;
+        font-style: italic;
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+    .tutorial-container p {
+        color: #ffffff;
+        font-size: 1.25rem;
+        margin-top: 1vh;
+    }
+    .tutorial-container.collapsed {
+        max-height: 5rem;
+    }
+
+    .btn {
+        user-select: none;
+        background-color: vars.$elohell-violet;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 2rem;
+        color: white;
+        border-radius: 5%;
+        text-decoration: none;
+        width: 80vw;
+    }
+
+
+
+
+
 }
