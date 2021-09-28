@@ -156,7 +156,7 @@ echo '
             </a>
         </div>
         <div class="fixed-bottom nonmobile" style="right: 5px">
-        <p>Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Cinzzya" class="link">Cinzya</a> and <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/xathon_" class="link">Xathon</a></p>
+        <p>Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/xathon_" class="link">Xathon</a>. Art by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/kryyOW" class="link">Kryy.</a></p>
         </div>
     </div>
     
