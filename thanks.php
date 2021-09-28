@@ -151,7 +151,7 @@ echo '
        
 
         <div class="fixed-bottom">
-            <a href="https://elohell.gg">
+            <a href="https://elohell.gg" style="font-size: 0">
                 <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" alt="Elo Hell Esports logo">
             </a>
         </div>

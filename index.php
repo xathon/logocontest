@@ -22,7 +22,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://logos.elohell.gg/" />
         <meta property="og:image" content="https://elohell.gg/media/img/logos/ggs6/GG_V_C_Dark.png"> 
-        <meta property="og:description" content="Vote for your favorite logos in the Elo Hell Zotac GitGud Tournament!">
+        <meta property="og:description" content="Vote for your favorite logos in the Elo Hell GitGud Tournament!">
         <meta name="theme-color" content="#FF882C">
         
         <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -111,7 +111,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
         </div>
         <div class="row align-self-center w-100">
             <div class="col-12 col-6-lg" style="text-align: center">
-                <h1>Welcome to the GitGud logocontest!</h1>
+                <h1 style="margin-block-end: 0.25em;">Welcome to the GitGud logocontest!</h1>
             </div>
         </div>
         <div class="row align-self-center w-100">
@@ -133,7 +133,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
         </div>
         
         <div class="fixed-bottom">
-            <a href="https://elohell.gg">
+            <a href="https://elohell.gg" style="font-size: 0">
                 <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" alt="Elo Hell Esports logo">
             </a>
         </div>
