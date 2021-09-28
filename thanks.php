@@ -3,6 +3,8 @@ session_start();
 include_once "helpers.php";
 include_once "db_conn.php";
 
+unset($_SESSION['completed']); //that way we can go agane
+
 
 if(time()>0 && false) {//TODO enter timestamp here
     if($_POST == []) {
