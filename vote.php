@@ -103,7 +103,7 @@ do {
 
 #debug
 #    $imageID1 = 264;
- #   $imageID2 = 351;
+#    $imageID2 = 351;
 
 
     $query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";

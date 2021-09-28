@@ -197,6 +197,7 @@ form {
     }
     .logo2 {
         transform: skewY(2deg);
+        height: 38%;
     }
 
     .left {
@@ -205,6 +206,9 @@ form {
 
     .right {
         margin: 15% 5% 0;
+    }
+    .right .btn {
+        height: 100%;
     }
     .right .btn .name__wrapper {
         position: absolute;
@@ -219,10 +223,11 @@ form {
 
         .img-fluid {
             width: 100%;
+            height: 80%;
             position: relative;
             cursor: pointer;
-            max-width: 260px;
-            max-height: 260px;
+            max-width: 220px;
+            max-height: 220px;
             object-fit: contain;
         }
     }
