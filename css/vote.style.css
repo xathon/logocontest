@@ -207,12 +207,12 @@ form {
   }
 
   .logo__wrapper .img-fluid {
-    width: 100%;
+    width: 90%;
     height: 80%;
     position: relative;
     cursor: pointer;
-    max-width: 220px;
-    max-height: 220px;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
   }
 

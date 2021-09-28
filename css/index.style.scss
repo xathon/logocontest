@@ -53,9 +53,10 @@
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-top: 3vh;
         margin-bottom: 3vh;
+        transition: 0.5s ease-in;
     }
     .container-fluid {
         background: url("../images/background/background_mobile.png") no-repeat center center fixed;

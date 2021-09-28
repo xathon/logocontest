@@ -38,7 +38,7 @@ a:not(.fixed-bottom a) {
 
     h1 {
         line-height: 1;
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-top: 3vh;
         margin-bottom: 3vh;
 
@@ -51,16 +51,23 @@ a:not(.fixed-bottom a) {
         background-size: cover;
         text-align: center;
     }
-    p {
+    p:not(.fixed-bottom p) {
         color: #ffffff;
         font-size: 1.25rem;
         margin-top: 1vh;
     }
+
     a:not(.fixed-bottom a)  {
         text-decoration: underline;
+        font-size: 1.25rem;
     }
     a.btn {
         text-decoration: none !important;
     }
 
+}
+@media (max-height: 600px) {
+    p {
+        font-size: 1rem;
+    }
 }

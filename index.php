@@ -111,7 +111,7 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
         </div>
         <div class="row align-self-center w-100">
             <div class="col-12 col-6-lg" style="text-align: center">
-                <h1 style="margin-block-end: 0.25em;">Welcome to the GitGud logocontest!</h1>
+                <h1 id="welcome" style="margin-block-end: 0.25em;">Welcome to the GitGud logocontest!</h1>
             </div>
         </div>
         <div class="row align-self-center w-100">
@@ -142,15 +142,29 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
 <script lang="js">
     let text = document.getElementById("tutorial");
     let container = document.getElementById("tutorial-container");
+    let welcome = document.getElementById("welcome");
+    let x = window.matchMedia("(max-width: 576px)");
+    
     
     container.addEventListener("click",function () {
         if(text.style.display === "none") {
             text.style.display = "block";
+            if(x.matches) {
+                welcome.style.display = "none";
+            }
         } else {
             text.style.display = "none";
+            if(x.matches) {
+                welcome.style.display = "block";
+            }
         }
         container.classList.toggle("collapsed");
     })
+    
+    
+    if(x.matches) {
+        
+    }
     
     
 </script>
