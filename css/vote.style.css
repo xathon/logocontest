@@ -35,6 +35,8 @@ form {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 1920px;
 }
 
 .logo__wrapper {
@@ -141,6 +143,88 @@ form {
   z-index: 1;
   left: 0;
   transition: 1s ease-in;
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    align-items: flex-end;
+  }
+
+  .main {
+    background: url("../images/background/background_mobile.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .background-buildings_img {
+    position: absolute;
+    aspect-ratio: 1030/1857;
+    width: 100vw;
+    max-width: 1030px;
+    max-height: 100vh;
+    bottom: 0;
+    background-image: url("../images/background/background_mobile_buildings.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  form {
+    width: 70%;
+    display: block;
+  }
+
+  .logo1 {
+    height: 42%;
+    transform: skewY(4deg);
+  }
+
+  .logo2 {
+    transform: skewY(2deg);
+  }
+
+  .left {
+    margin: 17% 5% 0;
+  }
+
+  .right {
+    margin: 15% 5% 0;
+  }
+
+  .right .btn .name__wrapper {
+    position: absolute;
+    top: 0;
+  }
+
+  .right .btn .img__wrapper {
+    margin-top: 21%;
+  }
+
+  .logo__wrapper .img-fluid {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    max-width: 260px;
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  .progress {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: -25%;
+    right: 90%;
+    bottom: 45%;
+    height: 8%;
+    width: 70%;
+  }
+
+  .name__wrapper {
+    width: 90%;
+    bottom: 13%;
+  }
 }
 
 /*# sourceMappingURL=vote.style.css.map */
