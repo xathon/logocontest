@@ -215,15 +215,11 @@ echo '
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="js/jquery.fittext.js"></script>
 <script>
-    window.onload = function () {
-        console.log("Currently, width is: "+document.getElementById("progress-bar").style.width);
+    document.addEventListener("DOMContentLoaded", () => {
         let w = parseInt(document.getElementById("progress").innerText);
-        
-        w = (w) * 5;
-        console.log("Setting width to "+ w.toString() + " %");
+        w = w * 5;
         document.getElementById("progress-bar").style.width = w + "%";
-        console.log("Now, width is: "+document.getElementById("progress-bar").style.width);    
-    }
+    });
     jQuery("h4").fitText();
 </script>
 
