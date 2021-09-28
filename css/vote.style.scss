@@ -1,118 +1,95 @@
-$elohell-grey: #2E2E2E;
-$elohell-black: #212121;
-$elohell-pink: #E53E62;
-$elohell-lightgrey: #707070;
+@use "vars";
 
-.container, form {
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+}
+
+.main {
+    background: url("../images/background/background_desktop_bubbles.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+
+.progress {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 5.5%;
+    bottom: 6.3%;
+    height: 7%;
+    width: 40%;
+    text-align: center;
+}
+
+form {
     position: relative;
     display: flex;
     flex-direction: row;
     height: 99%;
     overflow: hidden;
-
-    .text {
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
-
-    .vs {
-        position: absolute;
-        font-size: 3.75rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: auto;
-        margin-bottom: auto;
-        text-align: center;
-        width: 150px;
-        height: 150px;
-        line-height: 150px;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        vertical-align: middle;
-        color: $elohell-lightgrey;
-
-        &::before {
-            position: absolute;
-            content: " ";
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: auto;
-            margin-bottom: auto;
-            text-align: center;
-            width: 9.375rem;
-            height: 9.375rem;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform: rotate(45deg);
-            background-color: $elohell-black;
-            z-index: -1;
-        }
-    }
-}
-
-.logo__wrapper {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    position: relative;
-
-    &::before {
-        position: absolute;
-        content: " ";
-        height: 1000px;
-        width: 1000px;
-        background-color: $elohell-black;
-        z-index: -1;
-    }
-
-
-    .img-fluid {
-        width: 20vw;
-        // opacity: 2;
-        position: relative;
-        margin-left: 25%;
-        cursor: pointer;
-    }
-}
-
-.logo1::before {
-    transform-origin: center center;
-    transform: translate(-50%, 0) rotate(45deg) ;
-}
-
-.logo2::before {
-    transform-origin: center center;
-    transform: translate(50%, 0) rotate(45deg) ;
-}
-
-form {
     margin: 0;
     padding: 0;
 }
 
-#progress-bar {
+.logo__wrapper {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    height: 1%;
-    background-color: $elohell-pink;
+    height: 100%;
+    position: relative;
+
+    .img-fluid {
+        width: 100%;
+        position: relative;
+        cursor: pointer;
+        max-width: 595px;
+        max-height: 595px;
+        object-fit: contain;
+    }
 }
 
+.logo1 {
+    transform: skewY(3deg);
+
+}
+.logo2 {
+    transform: skewY(357deg);
+}
+
+
+
+
+.left {
+    margin-left: 17%;
+    margin-right: 20%;
+}
+.right {
+    margin-left: 20%;
+    margin-right: 17%;
+}
 .team__wrapper {
     background-color: transparent;
     color: transparent;
+    margin-top: 8%;
+    height: 100%;
+
 
     button {
+        width: 100%;
         background-color: transparent;
         color: transparent;
         -webkit-appearance: none;
@@ -131,7 +108,7 @@ form {
             padding: 0;
             display: inline-block;
         }
-    
+
         &:active {
             background-color: transparent;
             border: 0;
@@ -147,3 +124,40 @@ form {
         }
     }
 }
+
+.img__wrapper {
+    margin-bottom: 6vh;
+}
+
+.name__wrapper {
+    position: absolute;
+    width: 63%;
+    bottom: 19%;
+}
+
+.background-buildings_img {
+    position: absolute;
+    aspect-ratio: 1920/996;
+    width: 100vw;
+    max-width: 1920px;
+    max-height: 100vh;
+    bottom: 0;
+
+    background-image: url("../images/background/background_desktop_buildings.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+#progress-bar {
+    width: 100%;
+    height: 1%;
+    background-color: vars.$elohell-red;
+    bottom: 0;
+    z-index: 1;
+    left: 0;
+    transition: 1s ease-in;
+}
+
+
+

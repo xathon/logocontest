@@ -1,11 +1,11 @@
 @use "vars";
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton:wght@400;700&display=swap');
 
 h1, h2, h3, h4, .vs {
     color: white;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
     user-select: none;
 }
 
@@ -14,8 +14,9 @@ h1 {
 }
 
 h4 {
-    font-size: 3.125rem;
+    font-size: 3.25rem;
     margin: 0;
+    font-weight: normal;
 }
 
 body {
@@ -29,21 +30,21 @@ body {
 .btn {
     user-select: none;
     background-color: vars.$elohell-violet;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Anton', sans-serif;
     color: white;
     padding: 8px 20px;
     border-radius: 5%;
     text-decoration: none;
 }
 p {
-    font-family: "Barlow Condensed", sans-serif;
+    font-family: "Anton", sans-serif;
     font-size: 1rem;
     margin-block-end: 0;
     color: lightgray;
     user-select: none;
 }
 a {
-    font-family: "Barlow Condensed", sans-serif;
+    font-family: "Anton", sans-serif;
     font-size: 1rem;
 }
 .link {
