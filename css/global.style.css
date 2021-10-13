@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton:wght@400;700&display=swap");
 html {
   height: 100%;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill-available;
 }
 
 h1, h2, h3, h4, .vs {
@@ -26,6 +29,11 @@ body {
   margin: 0;
   max-width: 100vw;
   max-height: 100vh;
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+  min-height: fill-available;
 }
 
 .btn {
@@ -110,4 +118,4 @@ img {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=global.style.css.map */
