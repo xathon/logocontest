@@ -102,8 +102,8 @@ do {
     }
 
 #debug
-#    $imageID1 = 264;
-#    $imageID2 = 351;
+#    $imageID1 = 925;
+#    $imageID2 = 925;
 
 
     $query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";
@@ -130,7 +130,7 @@ echo '
 		<link rel="manifest" href="https://elohell.gg/media/img/favicon/site.webmanifest?v=1">
 		<link rel="mask-icon" href="https://elohell.gg/media/img/favicon/safari-pinned-tab.svg?v=1" color="#e53e62">
 		<link rel="shortcut icon" href="https://elohell.gg/media/img/favicon/favicon.ico?v=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/global.style.css" rel="stylesheet">
         <link href="css/vote.style.css" rel="stylesheet">
         <link href="css/bootstrap-grid.css" rel="stylesheet">
 	    <title>GitGud Logocontest</title>
@@ -142,7 +142,7 @@ echo '
         <meta property="og:description" content="Vote for your favorite logos in the Elo Hell GitGud Tournament!">
         <meta name="theme-color" content="#FF882C">
         
-        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" name="viewport">
 
     </head>
 

@@ -165,6 +165,9 @@ form {
     .container-fluid {
         align-items: flex-end;
     }
+    #progress-bar {
+        position: absolute;
+    }
     .main {
         background: url("../images/background/background_mobile.png") no-repeat center center fixed;
         -webkit-background-size: cover;
@@ -226,8 +229,8 @@ form {
             height: 80%;
             position: relative;
             cursor: pointer;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 55vw;
+            max-height: 28vh;
             object-fit: contain;
         }
     }
