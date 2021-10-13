@@ -11,18 +11,22 @@ CREATE TABLE `logos` (
                          `division` varchar(15) NOT NULL DEFAULT 'Unlimited' COMMENT 'Team Division',
                          `active` boolean NOT NULL DEFAULT TRUE COMMENT 'Do we want to show this logo?',
                          `updated` int(9) NOT NULL DEFAULT 0 COMMENT 'handy bit to know if we have changed this value at any time',
+						 `ollieburn` int default 0 not null comment 'Votes for the OllieBurn award',
+						 `paint` int default 0 not null comment 'Votes for the paint.exe award',
+						 `animal` int default 0 not null comment 'Votes for the Animal award',
+						 `staff` int default 0 not null comment 'Votes for the Staff Choice award',
                          PRIMARY KEY (`id`),
                          UNIQUE KEY `logos_name_uindex` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 -- Replace with local file
-LOAD DATA INFILE '/var/lib/mysql-files/GGS6 Teams.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/GGS8 Teams.csv'
     into table logos
     fields terminated by ';'
     enclosed by '"'
     lines terminated by '\n'
-    (name,region,division,active);
+    (`name`,region,division,active);
 
 
 
@@ -45,3 +49,11 @@ DROP TABLE IF EXISTS `output`;
 DROP VIEW IF EXISTS `output`;
 create view output as
 select *,(won_matchups/matchups) as won_ratio from logos where active > 0 order by won_ratio DESC,matchups DESC;
+
+DROP TABLE IF EXISTS `ivoted`;
+create table logocontest.ivoted(
+   sessionid varchar(32) not null,
+   timestamp int(10) not null,
+   constraint ivoted_pk
+       primary key (sessionid)
+)
