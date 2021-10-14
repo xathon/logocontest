@@ -3,8 +3,7 @@ session_start();
 session_unset();
 
 
-if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the desired end of the contest
-    //TODO edit the page for the new branding
+if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the desired end of the contest (note: we leave it like this for now and worry about this later)
     echo '<html lang="en">
     <head>
 		<link rel="apple-touch-icon" sizes="180x180" href="https://elohell.gg/media/img/favicon/apple-touch-icon.png?v=1">
@@ -76,7 +75,6 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
     </body>
 </html>';
 } else {
-    //TODO implement rebranding, make sure head is correct everywhere
     echo '
     <html lang="en">
     <head>
@@ -144,7 +142,6 @@ if(time()>1605459600 && false) { //TODO: edit the timestamp so it matches the de
     let container = document.getElementById("tutorial-container");
     let welcome = document.getElementById("welcome");
     let x = window.matchMedia("(max-width: 576px)");
-    //TODO integrate this https://github.com/ryanve/verge#jquery to maybe get better viewport from chrome mobile. 320dpi https://discord.com/channels/440799818068000769/545320602257326080/892250014250848286
     
     container.addEventListener("click",function () {
         if(text.style.display === "none") {

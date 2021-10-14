@@ -6,7 +6,7 @@ include_once "db_conn.php";
 unset($_SESSION['completed']); //that way we can go agane
 
 
-if(time()>0 && false) {//TODO enter timestamp here
+if(time()>0 && false) {//TODO enter timestamp here (note: we leave it like this for now and worry about this later)
     if($_POST == []) {
         header("Location: staffvote.php");
     }
@@ -84,7 +84,7 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
         
         <div class="row align-self-center">
             <div class="col align-content-center" style="text-align: center">
-                <h1>Thanks for voting!</h1>
+                <h1>THANKS FOR VOTING!</h1>
             </div>
         </div>
         <div class="row align-content-center">
@@ -99,7 +99,7 @@ echo '<html lang="en" prefix="og: https://ogp.me/ns#">
                 <div class="row" style="min-width: 720px">
                 ';
 
-if(time()>0 && false) {//TODO enter timestamp here
+if(time()>0 && false) {//TODO enter timestamp here (note: we leave it like this for now and worry about this later)
     if(isset($ollie)) {
         echo '<div class="col-3" >
                 <div class="mx-auto">
