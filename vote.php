@@ -103,7 +103,7 @@ do {
 
 #debug
 #    $imageID1 = 925;
-#    $imageID2 = 925;
+   $imageID2 = 1015;
 
 
     $query = "select name,active from logos where id = ".$imageID1." or id = ".$imageID2.";";
@@ -117,6 +117,7 @@ do {
     }
     unset($query);
 } while ($Img1 == NULL || $Img2 == NULL || $Img1['active'] == 0 || $Img2['active'] == 0);
+
 
 
 $progress = sizeof($_SESSION['completed']) * 5;
@@ -166,11 +167,6 @@ echo '
 
 
 
-
-//image 1
-
-
-
 echo '
 <div class="logo__wrapper logo1">
 <div class="team__wrapper left">
@@ -178,8 +174,13 @@ echo '
         <div class="img__wrapper">
                 <img class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($Img1['name']).'.png" alt="'.$Img1['name'].'">
             </div>
-            <div class="name__wrapper">
-                <h4 class="name">'.$Img1['name'].'</h4>
+            <div id="name__wrapper_left" class="name__wrapper">
+                <div><h4 class="name"';
+
+
+if(strlen($Img1['name']) > 24) echo ' style="font-size: 2.75rem"';
+
+    echo '>'.$Img1['name'].'</h4></div>
             </div>
         </button>
     </div>
@@ -193,8 +194,11 @@ echo '<div class="team__wrapper right">
             <div class="img__wrapper">
                 <img class="img-fluid" src="https://img.elohell.gg/overlay/teams/'.normalize_text($Img2['name']).'.png" alt="'.$Img2['name'].'">
             </div>
-            <div class="name__wrapper">
-                <h4 class="name">'.$Img2['name'].'</h4>
+            <div id="name__wrapper_left" class="name__wrapper">
+                <div><h4 class="name"';
+if(strlen($Img2['name']) > 24) echo ' style="font-size: 2.75rem"';
+
+echo '>'.$Img2['name'].'</h4></div>
             </div>
             
         </button>
@@ -220,7 +224,7 @@ echo '
         w = w * 5;
         document.getElementById("progress-bar").style.width = w + "%";
     });
-    jQuery("h4").fitText();
+    jQuery("h4#progress").fitText();
 </script>
 
 </body>
