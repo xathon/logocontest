@@ -225,6 +225,10 @@ echo '
         document.getElementById("progress-bar").style.width = w + "%";
     });
     jQuery("h4#progress").fitText();
+    const vp = window.matchMedia("(max-width:576px)");
+    if(vp.matches) {
+        jQuery("h4").fitText(); //use the jquery resizer on mobile
+    } 
 </script>
 
 </body>
