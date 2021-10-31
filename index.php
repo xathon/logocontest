@@ -3,7 +3,7 @@ session_start();
 session_unset();
 
 
-if(time()>1635742800 && true) { //TODO: edit the timestamp so it matches the desired end of the contest (note: we leave it like this for now and worry about this later)
+if(time()>1635742800) {
     echo '<html lang="en">
     <head>
 		<link rel="apple-touch-icon" sizes="180x180" href="https://elohell.gg/media/img/favicon/apple-touch-icon.png?v=1">
@@ -43,14 +43,16 @@ if(time()>1635742800 && true) { //TODO: edit the timestamp so it matches the des
                         
                         <h2 style="font-size: 1.25em;font-weight: normal">The first round of voting has ended!<br>
                             The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a class="link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/elohellesports">@elohellesports on Twitter</a>, where the final votes will happen daily! </h2>
-                        <div class="nonmobile">
-                            <a class="twitter-timeline" data-border-color="#FF882C" data-chrome="noheader,nofooter" data-dnt="true" data-theme="dark" data-height="30vh" href="https://twitter.com/EloHellEsports?ref_src=twsrc%5Etfw" >Tweets by EloHellEsports</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        </div>
+                        
                     </div>
-                    
+                </div>
+                <div class="row align-self-center w-100 nonmobile flex-fill">
+                        <div class="nonmobile" style="width: 100%;height: 100%">
+                            <a class="twitter-timeline" data-border-color="#FF882C" data-chrome="noheader,nofooter" data-dnt="true" data-theme="dark" data-height="35vh" href="https://twitter.com/EloHellEsports?ref_src=twsrc%5Etfw" >Tweets by EloHellEsports</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-sm-12 d-none d-lg-flex">
+            <div class="col-lg-9 col-sm-12 d-none d-lg-flex" style="max-width: 1420px">
                 <iframe style="width: 100%;height: 90vh;display:none " src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSH5pVXbhVnOBIrUvh3-Xlkcnl6sJwNBLJ8DuKDSnXiQIKLp3UkEqMJWSC6J3QB4TCi3L6rFaqEPtcC/pubhtml?widget=true&amp;headers=false"></iframe>
                 <iframe class="nonmobile" style="width: 100%;height: 90vh" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTyrBdzr5xMzb1pCqI0vjB7UK3zoKPRJi6voVGR35HgL33bB_D7hqsrikIGZ3Y1L_xAVyFw5AY022RE/pubhtml?widget=true&amp;headers=false"></iframe>
             </div>
@@ -62,6 +64,9 @@ if(time()>1635742800 && true) { //TODO: edit the timestamp so it matches the des
             <a href="https://elohell.gg" style="font-size: 0">
                 <img src="https://elohell.gg/media/img/logos/Elo-Hell-Logo_H-C-Dark.png" alt="Elo Hell Esports logo">
             </a>
+        </div>
+        <div class="fixed-bottom nonmobile" style="right: 5px">
+        <p>Made with ❤ by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/xathon_" class="link">Xathon</a>. Art by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/kryyOW" class="link">Kryy.</a></p>
         </div>
     </div>
 

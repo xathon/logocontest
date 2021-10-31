@@ -3,7 +3,20 @@ session_start();
 include_once "helpers.php";
 include_once "db_conn.php";
 
-if(!isset($_SESSION['numberLogos'])){
+if(time()>1635742800) {
+    echo '<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Redirecting...</title>
+  <meta content="0; URL=index.php" http-equiv="refresh">
+</head>
+</html>';
+    exit();
+}
+
+    if(!isset($_SESSION['numberLogos'])){
     $query = "select count(id) from logos; ";
     $rCount = mysqli_query($remote,$query);
     $_SESSION['numberLogos'] = mysqli_fetch_assoc($rCount)['count(id)'];

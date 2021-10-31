@@ -60,7 +60,7 @@ a {
 }
 
 .link {
-  text-decoration: inherit;
+  text-decoration: underline;
   font-family: inherit;
   color: inherit;
   font-size: inherit;
