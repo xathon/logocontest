@@ -15,7 +15,7 @@ if(time()>1635742800) {
         <link href="css/global.style.css" rel="stylesheet">
         <link href="css/index.style.css" rel="stylesheet">
         <link href="css/bootstrap-grid.css" rel="stylesheet">
-	    <title>GitGud Logocontest</title>
+	    <title>GitGud Logo Contest</title>
 
         <meta property="og:title" content="GitGud Logocontest" />
         <meta property="og:type" content="website"/>
@@ -39,7 +39,7 @@ if(time()>1635742800) {
                 </div>
                 <div class="row align-self-center w-100" >
                     <div class="col-10 col-6-lg d-lg-block" style="text-align: center;margin: auto">
-                        <h1 style="font-size: 2.8em;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud logocontest!</h1>
+                        <h1 style="font-size: 2.8em;margin-top: 0.2em;margin-bottom: 0.2em;">Welcome to the GitGud Logo Contest!</h1>
                         
                         <h2 style="font-size: 1.25em;font-weight: normal">The first round of voting has ended!<br>
                             The Top 16 logos have advanced to a bracket to determine the winner.<br> Follow <a class="link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/elohellesports">@elohellesports on Twitter</a>, where the final votes will happen daily! </h2>
