@@ -6,6 +6,18 @@ include_once "db_conn.php";
 $query = "select * from logocontest.output order by name ASC;";
 $result = mysqli_query($remote, $query);
 
+echo '<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <title>Redirecting...</title>
+  <meta content="0; URL=gallery.php" http-equiv="refresh">
+</head>
+</html>';
+exit();
+
+/*
 echo '<html>
 <head>
 		<link rel="apple-touch-icon" sizes="180x180" href="https://elohell.gg/media/img/favicon/apple-touch-icon.png?v=1">
@@ -95,7 +107,7 @@ echo '
     </div>
     </body>
     </html>'
-
+*/
 ?>
 
 
