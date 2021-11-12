@@ -1,0 +1,26 @@
+@use "vars";
+
+.galleryelement {
+  margin-bottom: 3vh;
+  background-color: vars.$elohell-violet;
+  padding: 3vw 1vh;
+  border-radius: 15px;
+
+}
+.teamname {
+  text-align: center;
+}
+
+.container-fluid {
+  background: url("../images/background/background_desktop_bubbles.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h1,h2 {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
